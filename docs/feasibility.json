@@ -1,0 +1,109 @@
+{
+  "purpose": "Pre-submission feasibility only; no final test results",
+  "verified_on": "2026-10-17",
+  "seed": 42,
+  "files": [
+    {
+      "name": "True.csv",
+      "rows": 21417,
+      "columns": [
+        "title",
+        "text",
+        "subject",
+        "date"
+      ],
+      "bytes": 53582940,
+      "sha256": "ba0844414a65dc6ae7402b8eee5306da24b6b56488d6767135af466c7dcb2775",
+      "blank_titles": 0,
+      "exact_repeated_titles": 591
+    },
+    {
+      "name": "Fake.csv",
+      "rows": 23481,
+      "columns": [
+        "title",
+        "text",
+        "subject",
+        "date"
+      ],
+      "bytes": 62789876,
+      "sha256": "bebf8bcfe95678bf2c732bf413a2ce5f621af0102c82bf08083b2e5d3c693d0c",
+      "blank_titles": 0,
+      "exact_repeated_titles": 5578
+    }
+  ],
+  "raw_rows": 44898,
+  "empty_normalized_titles": 0,
+  "conflicting_normalized_title_records": 0,
+  "cleaned_unique_titles": 38720,
+  "normalized_duplicates_removed": 6178,
+  "cleaned_label_counts": {
+    "0": 20819,
+    "1": 17901
+  },
+  "near_duplicate_rule": "token-set Jaccard >= 0.90, label-blind connected components",
+  "groups": 38695,
+  "split": {
+    "development_rows": 30976,
+    "reserved_heldout_rows": 7744,
+    "reserved_heldout_evaluated": false,
+    "feasibility_fit_rows": 20650,
+    "feasibility_validation_rows": 10326,
+    "duplicate_group_overlap": 0
+  },
+  "publisher_column_present": false,
+  "vectorizer": {
+    "max_features": 20000,
+    "ngram_range": [
+      1,
+      1
+    ],
+    "min_df": 2,
+    "stop_words": "english",
+    "lowercase": true,
+    "norm": "l2"
+  },
+  "checks": {
+    "naive_bayes": {
+      "fit": "pass",
+      "validation_metrics_computable": "pass",
+      "signed_contribution_identity": "pass",
+      "offline_reload_parity": "pass",
+      "empty_unknown_vector_detection": "pass",
+      "grouped_training_cv_grid": "pass",
+      "features": 9784
+    },
+    "logistic_regression": {
+      "fit": "pass",
+      "validation_metrics_computable": "pass",
+      "signed_contribution_identity": "pass",
+      "offline_reload_parity": "pass",
+      "empty_unknown_vector_detection": "pass",
+      "grouped_training_cv_grid": "pass",
+      "features": 9784
+    },
+    "majority_baseline": "pass",
+    "kmeans": {
+      "3": {
+        "fit": "pass",
+        "silhouette_computable": "pass",
+        "nonempty_clusters": 3,
+        "top_terms_available": "pass"
+      },
+      "5": {
+        "fit": "pass",
+        "silhouette_computable": "pass",
+        "nonempty_clusters": 5,
+        "top_terms_available": "pass"
+      },
+      "8": {
+        "fit": "pass",
+        "silhouette_computable": "pass",
+        "nonempty_clusters": 8,
+        "top_terms_available": "pass"
+      }
+    },
+    "streamlit_saved_model_input_and_unknown_terms": "pass"
+  },
+  "elapsed_seconds": 43.75
+}

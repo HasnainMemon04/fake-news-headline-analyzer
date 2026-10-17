@@ -7,9 +7,8 @@ Instructor: Miss Amma Aslam | Proposal weightage: 1 mark
 ## Group Information
 | Position | Name | Roll number | Section | Planned role |
 |---|---|---|---|---|
-| Leader | Muhammad Hasnain Memon | 24K-2001 | BCY-5A | Architecture and models |
-| Member 2 | Akbar Hussain | 24K-2026 | BCY-5A | Data, EDA and clustering |
-| Member 3 | Ateeb Ahmed Qureshi | 24K-2036 | BCY-5A | Interface and explanations |
+| Leader | Muhammad Hasnain Memon | 24K-2001 | BCY-5A | Architecture, models and explanations |
+| Member 2 | Akbar Hussain | 24K-2026 | BCY-5A | Data, clustering and interface |
 
 | Field | Value |
 |---|---|
@@ -19,7 +18,7 @@ Instructor: Miss Amma Aslam | Proposal weightage: 1 mark
 | GitHub repository URL | https://github.com/HasnainMemon04/fake-news-headline-analyzer |
 | Date of submission | Pending instructor announcement; prepared 17 October 2026 |
 
-**Group approval required:** Section 1 limits groups to two, although the guidelines heading and template allow three. All three members are proposed; instructor approval has not been granted. Idea allocation on the BCY-5A group sheet must also be confirmed.
+The team has two members and complies with the official group-size limit. Idea allocation on the BCY-5A group sheet must be confirmed.
 
 ## 1. Project Title and Summary
 Explainable Fake News Headline Analyzer will classify English headlines as likely real or likely fake based on a labelled dataset. Students and readers will enter a headline and inspect the prediction and influential words. Two supervised classifiers will learn language patterns that fixed keyword rules cannot reliably describe. Topic clustering will organize similar headlines for exploration. The application will support learning and critical reading, while making clear that a headline classification does not independently establish factual truth.
@@ -86,15 +85,15 @@ TF-IDF represents short headlines with sparse word weights, keeping training pra
 ## 6. Data or Environment Source
 | Field | Verified source and planned use |
 |---|---|
-| Source name and URL | ISOT Fake News Dataset, University of Victoria [1]; direct archive [2]. |
+| Source name and URL | ISOT Fake News Dataset, University of Victoria [1]; verified Kaggle mirror [3]; university archive [2]. |
 | Type | Public dataset; locally loaded CSV files. |
-| Access requirements | Public university archive; no API key. Manual Kaggle mirror [3] is a fallback and may require a free account. |
-| Approximate size | 44,898 articles before cleaning: 21,417 real and 23,481 fake, per the official description [4]. |
-| Required columns | title for input; binary label derived from True.csv/Fake.csv. subject, date and text support auditing only. |
-| Licence / terms | Official description requests attribution but states no explicit reuse licence. Do not infer redistribution rights; keep raw text local and confirm terms before sharing data. |
-| Offline fallback | Cache manually downloaded CSVs in data/raw; processed splits in data/processed; trained artifacts locally in outputs. Record SHA-256 and source. Once prepared, training and inference require no network. |
+| Access requirements | Mirror downloaded anonymously; no key or account used. University ZIP is an alternative; local caching avoids repeated downloads. |
+| Approximate size | Verified 44,898 articles: 21,417 real and 23,481 fake; 38,720 unique normalized titles after duplicate removal. |
+| Required columns | Verified title, text, subject, date. Use title only; derive labels from True.csv/Fake.csv. No publisher column is supplied. |
+| Licence / terms | Mirror metadata lists CC BY-NC-SA 4.0. Cite original authors; the university description states no separate explicit licence. Keep article text local. |
+| Offline fallback | Verified CSVs cached in data/raw with SHA-256 records; split manifest in data/processed. Future trained artifacts stay local in outputs. Prepared runs require no network. |
 
-**Preparation:** Validate schema and labels; remove empty titles and exact normalized duplicates; exclude conflicting-label duplicates. Group near-duplicate titles before splitting. Inspect unusually short/long records and document retention or removal rules without tuning to test performance. Use title text only as features. Source analysis will distinguish verified publisher metadata from unknown values; subject and input filename are not publishers. Where source IDs exist, add a grouped source holdout; otherwise report the lack of source-independent evidence and Reuters-related bias. Never infer individual fake publishers from class labels.
+**Preparation:** Normalize Unicode/case/punctuation for duplicate checks; remove empty and conflicting titles and exact normalized repeats. Group near duplicates by token-set Jaccard similarity of at least 0.90 before splitting. Inspect length outliers and document rules without tuning to test outcomes. Source EDA will audit documented Reuters collection provenance and unknown fake publishers, with missing-source coverage explicit. Subject and CSV filename are not publishers; this dataset cannot support a publisher-disjoint evaluation. Full local schema/count/hash checks and a separate feasibility spike are recorded in repository documentation.
 
 ## 7. Evaluation Plan
 | Requirement | Planned experiment |
@@ -102,43 +101,42 @@ TF-IDF represents short headlines with sparse word weights, keeping training pra
 | What will be compared | Multinomial Naive Bayes, Logistic Regression and majority baseline with the same representation and test IDs. |
 | Metric(s) | Accuracy; per-class precision, recall and F1; macro-F1; confusion matrices; fit and batch prediction seconds on the same hardware. |
 | Baseline | Most frequent training class; tie rule and label order recorded. |
-| Test instances / test set | Approx. 80/20 stratified group split after cleaning; lock 20% away. Duplicate groups cannot cross splits; record final counts and class proportions. |
+| Test instances / test set | Five-fold stratified group splitter: reserve its first fold (7,744 titles); 30,976 development titles. No duplicate group crosses splits; final test remains unevaluated. |
 | Number of runs and seed | random.seed(42), NumPy seed 42, estimator/split random_state=42. Three-fold grouped stratified CV within training only; one final test evaluation per selected model. |
 | Planned charts | Labelled model metric bars; confusion matrices with class names; length distributions; frequent terms and source coverage; cluster sizes and top terms. Include a numeric results table. |
 
-Fit TF-IDF inside each CV fold, then refit on training only. Compare small grids for NB alpha and LR C; fix vocabulary cap and document all parameters. Fit K-Means on training features without labels; select k from {3,5,8} using sampled silhouette and readable terms, with seed 42 and n_init=10. Report silhouette, cluster sizes, representative headlines and cautious human topic names. No target accuracy or results are claimed.
+Fit TF-IDF inside each CV fold: word unigrams, 20,000-feature cap, min_df=2 and English stop words. Compare NB alpha in {0.5,1} and LR C in {0.5,1,2}; refit on development data only. Fit K-Means without labels; choose k from {3,5,8} using sampled silhouette and readable terms, with seed 42 and n_init=10. Report cluster sizes, top terms and representative headlines. Feasibility checks do not replace final test results; no accuracy threshold is promised.
 
 <!-- pagebreak -->
 
 ## 8. Division of Work
 | Member | Modules / components owned | Approximate share |
 |---|---|---|
-| Muhammad Hasnain Memon - 24K-2001 | Architecture, preprocessing integration, classifiers, evaluation and repository coordination | 34% |
-| Akbar Hussain - 24K-2026 | Dataset acquisition, EDA, K-Means clustering and visualizations | 33% |
-| Ateeb Ahmed Qureshi - 24K-2036 | Streamlit interface, explanation integration, testing and user documentation | 33% |
+| Muhammad Hasnain Memon - 24K-2001 | Architecture, preprocessing integration, classifiers, word explanations, evaluation and repository coordination | 50% |
+| Akbar Hussain - 24K-2026 | Dataset acquisition, EDA, K-Means, visualizations, Streamlit interface and user documentation | 50% |
 
-These are planned responsibilities, subject to three-member approval. Each member will write and explain their modules, make genuine commits from their own account and review one integration boundary. The final report will record actual contributions and cite external code, datasets and AI assistance.
+Both members will collaborate on integration, experiments, testing and final viva preparation. Each will write and explain their modules, make genuine commits from their own account and review one integration boundary. The final report will record actual contributions and cite external code, datasets and AI assistance.
 
 ## 9. Milestones and Timeline
 | # | Demonstrable milestone | Target | Owner |
 |---|---|---|---|
 | 1 | Validated dataset, source audit, split manifest and EDA charts | Week 9 | Akbar; Hasnain integration |
 | 2 | Two classifiers and baseline reproducibly trained; CV table exported | Week 10 | Hasnain; Akbar review |
-| 3 | Interpreted topic clusters and verified signed word contributions | Weeks 11-12 | Akbar + Ateeb; Hasnain review |
-| 4 | Streamlit input, explanations and analysis views run offline; error cases checked | Weeks 13-14 | Ateeb; team integration |
-| 5 | Final held-out experiments, three or more charts, report PDF/MD, fresh-clone verification and clean repository | Week 15 | All; leader submits |
+| 3 | Interpreted topic clusters and verified signed word contributions | Weeks 11-12 | Akbar + Hasnain |
+| 4 | Streamlit input, explanations and analysis views run offline; error cases checked | Weeks 13-14 | Akbar; both integrate/test |
+| 5 | Final held-out experiments, three or more charts, report PDF/MD, fresh-clone verification and clean repository | Week 15 | Both; leader submits |
 
 Week targets are provisional planning slots; the current teaching week and proposal deadline need instructor confirmation. If fewer weeks remain, compress the first four milestones while retaining the Week 15 submission. Individual viva takes place in submission week; evaluation finishes before the Week 16 Lab Final Exam.
 
 ## 10. Expected Outcome and Risks
-A working submission will open a local dashboard where users classify English headlines, inspect signed word contributions, and explore topic groups. The report will present measured classifier and baseline scores, confusion matrices, runtime, and interpreted clusters without promising an accuracy threshold. The first risk is learning publisher style or duplicated wording instead of useful headline patterns; duplicate grouping, source auditing, and explicit generalization limits will address it. The second risk is data access or unclear reuse terms; early acquisition, local caching, and a verified mirror will support continuity, while data redistribution remains excluded until permission is clear. Empty input and missing artifacts will produce actionable messages.
+A working submission will open a local dashboard where users classify English headlines, inspect signed word contributions, and explore topic groups. The report will present measured classifier and baseline scores, confusion matrices, runtime, and interpreted clusters without promising an accuracy threshold. The first risk is learning publisher style or duplicated wording instead of useful headline patterns; duplicate grouping, source auditing, and explicit generalization limits will address it. The second risk is losing access to the data; the verified local cache, checksums and documented mirror will support continuity, with article text kept outside Git. Empty input and missing artifacts will produce actionable messages.
 
 ### References and access record
 [1] University of Victoria ISOT dataset page: https://onlineacademiccommunity.uvic.ca/isot/datasets/
 [2] University archive: https://onlineacademiccommunity.uvic.ca/isot/wp-content/uploads/sites/7295/2023/03/News-_dataset.zip
 [3] Kaggle mirror: https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
 [4] ISOT official description: https://onlineacademiccommunity.uvic.ca/isot/wp-content/uploads/sites/7295/2023/02/ISOT_Fake_News_Dataset_ReadMe.pdf
-Sources checked 17 October 2026. Cite the dataset papers requested in [4] in the final report. University source documents: AL-2002 Project Guidelines, Project Ideas and Project Proposal Template, Fall 2026, supplied as DOCX.
+Sources and complete mirror CSVs checked 17 October 2026. Cite the dataset papers requested in [4] in the final report. University source documents: AL-2002 Project Guidelines, Project Ideas and Project Proposal Template, Fall 2026, supplied as DOCX.
 
 ### For office use - Lab Instructor
 | Field | Reserved for instructor |

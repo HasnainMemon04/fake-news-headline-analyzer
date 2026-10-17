@@ -11,8 +11,8 @@ Authority: supplied Fall 2026 DOCX versions of the official AL-2002 Project Guid
 | Summary in 4-6 sentences | Five sentences |
 | Problem statement 120-180 words | 158 words (body only, whitespace count) |
 | Technique justification 100-150 words | 125 words |
-| Expected outcome and risks 80-120 words | 106 words (body only, whitespace count) |
-| Group table, project metadata, office-use fields | All present; office-use values blank |
+| Expected outcome and risks 80-120 words | 102 words (body only, whitespace count) |
+| Group table, project metadata, office-use fields | Exactly two members, correct roll numbers and roles; office-use values blank |
 | Idea 19: length, frequent-word, source EDA | Sections 5-6; missing publisher metadata explicitly addressed |
 | Idea 19: NB and LR comparison | Sections 4 and 7; same test IDs plus majority baseline |
 | Idea 19: highlighted influential words | Sections 4-5; contributions specific to each classifier |
@@ -24,13 +24,13 @@ Authority: supplied Fall 2026 DOCX versions of the official AL-2002 Project Guid
 | Meaningful experiments and 3+ labelled charts | Section 7; held-out test, grouped CV, metrics, timing and result table |
 | Modular layout, README and requirements | Present; source implementation explicitly future work |
 | Limitations and ethics | Sections 5, 6 and 10; no independent truth claim, source bias and data terms |
-| Source, caching and offline plan | Section 6 and docs/data-source.md; local preparation required |
-| Work division and five milestones | Sections 8-9; balanced 34/33/33 planned shares |
+| Source, caching and offline plan | Section 6 and docs/data-source.md; actual mirror downloaded, schema/counts/hash checked; local cache retained |
+| Work division and five milestones | Sections 8-9; two members, balanced 50/50 planned shares; shared integration, experiments, testing and viva preparation |
 | Final Week 15; viva before Week 16 final | Section 9; interim week numbers provisional |
 | Visual QA | Every rendered page inspected; no clipped content, overlap or broken tables |
 | Consistent PDF/MD | Same authoritative content; automated normalized text comparison |
 
-The requirements above are satisfied at the proposal/planning level. They do not establish that the eventual application, algorithms, experiments or final report already exist.
+The requirements above are satisfied at the proposal/planning level. The separate feasibility spike validates the intended libraries and local data. The final application, final held-out experiments and final report remain future work.
 
 ## Grading and later completion
 
@@ -42,10 +42,9 @@ Before final project submission, implement the planned module interfaces; pin/re
 
 ## Remaining administrative actions
 
-1. Obtain Miss Amma Aslam's approval for three members. The guidelines heading says three, but Section 1 says at most two; the template's third row does not prove approval.
-2. Confirm Idea 19 availability and record the team on the BCY-5A group sheet; one group per idea per section, first come first served.
-3. Confirm the instructor-announced proposal deadline/current teaching week and enter the actual submission date when submitting.
-4. Confirm dataset reuse terms before sharing any article text. No data redistribution permission is claimed.
-5. The leader submits the public repository link on Google Classroom. This action has not been performed.
+1. Confirm Idea 19 availability and record the team on the BCY-5A group sheet; one group per idea per section, first come first served.
+2. Confirm the instructor-announced proposal deadline/current teaching week and enter the actual submission date when submitting.
+3. Follow the mirror's published terms and original-author attribution; raw article text stays local and outside Git.
+4. The leader submits the public repository link on Google Classroom. This action has not been performed.
 
 GitHub URL is resolved: https://github.com/HasnainMemon04/fake-news-headline-analyzer (existing public repository reused).

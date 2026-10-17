@@ -1,0 +1,18 @@
+{
+  "ref": "clmentbisaillon/fake-and-real-news-dataset",
+  "id": 4831777,
+  "url": "https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset",
+  "licenseName": "CC BY-NC-SA 4.0",
+  "currentVersionNumber": 1,
+  "lastUpdated": "2024-04-19T13:02:33.387Z",
+  "totalBytes": 42975911,
+  "isPrivate": false,
+  "verified_on": "2026-10-17",
+  "metadata_source": "https://www.kaggle.com/api/v1/datasets/list?search=fake-and-real-news-dataset",
+  "download_source": "https://www.kaggle.com/api/v1/datasets/download/clmentbisaillon/fake-and-real-news-dataset",
+  "download_sha256": "38bf7e046c3a59b2c746c38f2fb74f4603493c6ed9c997f2f2ddb3969705fb42",
+  "anonymous_download_verified": true,
+  "zip_crc_check": "pass",
+  "downloader_empty_directory_check": "pass",
+  "downloader_cached_offline_path_check": "pass"
+}
