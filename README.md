@@ -2,16 +2,17 @@
 
 AL-2002 Artificial Intelligence Laboratory semester project proposal, FAST-NUCES Karachi, Fall 2026, BCY-5A. Instructor: Miss Amma Aslam. Idea 19, Part B. The proposed application will classify English headlines using TF-IDF with Naive Bayes and Logistic Regression, explain each prediction using signed feature contributions, and explore K-Means topics in a local Streamlit interface. Predictions describe dataset patterns and cannot establish factual truth.
 
-**Status: two-member proposal complete; final application implementation is planned.** The real dataset has been downloaded and audited locally, and a separate feasibility check exercises the proposed stack. No final test scores, trained artifacts or final report are supplied. The team complies with the official maximum of two students. Idea allocation must be confirmed on the section sheet.
+**Status: proposal prepared for a proposed three-member team; final application implementation is planned.** The real dataset has been downloaded and audited locally, and a separate feasibility check exercises the proposed stack. No final test scores, trained artifacts or final report are supplied. Instructor approval is required for the three-member team because Section 1 of the guidelines limits groups to two; no exception has been approved. Idea allocation must be confirmed on the section sheet.
 
 ## Team and planned ownership
 
 | Member | Roll number | Planned work |
 |---|---|---|
-| Muhammad Hasnain Memon, Group Leader | 24K-2001 | Architecture, preprocessing integration, classification, signed word explanations, evaluation, repository coordination |
-| Akbar Hussain, Member 2 | 24K-2026 | Data acquisition, EDA, K-Means, visualizations, Streamlit interface, user documentation |
+| Muhammad Hasnain Memon, Group Leader | 24K-2001 | Architecture, preprocessing integration, classification, evaluation, repository coordination |
+| Akbar Hussain, Member 2 | 24K-2026 | Data acquisition, EDA, K-Means, visualizations |
+| Ateeb Ahmed Qureshi, Member 3 | 24K-2036 | Streamlit interface, explainability integration, testing, user documentation |
 
-The planned split is 50% each. Both members collaborate on integration, experiments, testing and final viva preparation. Responsibilities are plans, not claims of completed software contributions. Each student must commit their own actual work from their own account. Document preparation used OpenAI Codex assistance; final report acknowledgements must record external code, datasets and AI assistance.
+The planned shares are 34% for Muhammad Hasnain Memon and 33% each for Akbar Hussain and Ateeb Ahmed Qureshi. All three members collaborate on integration, experiments, testing and final viva preparation, subject to group-size approval. Responsibilities are plans, not claims of completed software contributions. Each student must commit their own actual work from their own account. Document preparation used OpenAI Codex assistance; final report acknowledgements must record external code, datasets and AI assistance.
 
 ## Proposal and requirements
 

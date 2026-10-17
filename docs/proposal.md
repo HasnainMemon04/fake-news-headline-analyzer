@@ -7,8 +7,9 @@ Instructor: Miss Amma Aslam | Proposal weightage: 1 mark
 ## Group Information
 | Position | Name | Roll number | Section | Planned role |
 |---|---|---|---|---|
-| Leader | Muhammad Hasnain Memon | 24K-2001 | BCY-5A | Architecture, models and explanations |
-| Member 2 | Akbar Hussain | 24K-2026 | BCY-5A | Data, clustering and interface |
+| Leader | Muhammad Hasnain Memon | 24K-2001 | BCY-5A | Architecture and models |
+| Member 2 | Akbar Hussain | 24K-2026 | BCY-5A | Data, EDA and clustering |
+| Member 3 | Ateeb Ahmed Qureshi | 24K-2036 | BCY-5A | Interface and explanations |
 
 | Field | Value |
 |---|---|
@@ -18,7 +19,7 @@ Instructor: Miss Amma Aslam | Proposal weightage: 1 mark
 | GitHub repository URL | https://github.com/HasnainMemon04/fake-news-headline-analyzer |
 | Date of submission | Pending instructor announcement; prepared 17 October 2026 |
 
-The team has two members and complies with the official group-size limit. Idea allocation on the BCY-5A group sheet must be confirmed.
+**Group approval required:** Section 1 limits groups to two, although the guidelines heading and template allow three. All three members are proposed; instructor approval has not been granted. Idea allocation on the BCY-5A group sheet must also be confirmed.
 
 ## 1. Project Title and Summary
 Explainable Fake News Headline Analyzer will classify English headlines as likely real or likely fake based on a labelled dataset. Students and readers will enter a headline and inspect the prediction and influential words. Two supervised classifiers will learn language patterns that fixed keyword rules cannot reliably describe. Topic clustering will organize similar headlines for exploration. The application will support learning and critical reading, while making clear that a headline classification does not independently establish factual truth.
@@ -112,19 +113,20 @@ Fit TF-IDF inside each CV fold: word unigrams, 20,000-feature cap, min_df=2 and 
 ## 8. Division of Work
 | Member | Modules / components owned | Approximate share |
 |---|---|---|
-| Muhammad Hasnain Memon - 24K-2001 | Architecture, preprocessing integration, classifiers, word explanations, evaluation and repository coordination | 50% |
-| Akbar Hussain - 24K-2026 | Dataset acquisition, EDA, K-Means, visualizations, Streamlit interface and user documentation | 50% |
+| Muhammad Hasnain Memon - 24K-2001 | Architecture, preprocessing integration, classifiers, evaluation and repository coordination | 34% |
+| Akbar Hussain - 24K-2026 | Dataset acquisition, EDA, K-Means clustering and visualizations | 33% |
+| Ateeb Ahmed Qureshi - 24K-2036 | Streamlit interface, explainability integration, testing and user documentation | 33% |
 
-Both members will collaborate on integration, experiments, testing and final viva preparation. Each will write and explain their modules, make genuine commits from their own account and review one integration boundary. The final report will record actual contributions and cite external code, datasets and AI assistance.
+All three members will collaborate on integration, experiments, testing and final viva preparation, subject to instructor approval of the group size. Each will write and explain their modules, make genuine commits from their own account and review one integration boundary. The final report will record actual contributions and cite external code, datasets and AI assistance.
 
 ## 9. Milestones and Timeline
 | # | Demonstrable milestone | Target | Owner |
 |---|---|---|---|
 | 1 | Validated dataset, source audit, split manifest and EDA charts | Week 9 | Akbar; Hasnain integration |
 | 2 | Two classifiers and baseline reproducibly trained; CV table exported | Week 10 | Hasnain; Akbar review |
-| 3 | Interpreted topic clusters and verified signed word contributions | Weeks 11-12 | Akbar + Hasnain |
-| 4 | Streamlit input, explanations and analysis views run offline; error cases checked | Weeks 13-14 | Akbar; both integrate/test |
-| 5 | Final held-out experiments, three or more charts, report PDF/MD, fresh-clone verification and clean repository | Week 15 | Both; leader submits |
+| 3 | Interpreted topic clusters and verified signed word contributions | Weeks 11-12 | Akbar + Ateeb; Hasnain review |
+| 4 | Streamlit input, explanations and analysis views run offline; error cases checked | Weeks 13-14 | Ateeb; all integrate/test |
+| 5 | Final held-out experiments, three or more charts, report PDF/MD, fresh-clone verification and clean repository | Week 15 | All; leader submits |
 
 Week targets are provisional planning slots; the current teaching week and proposal deadline need instructor confirmation. If fewer weeks remain, compress the first four milestones while retaining the Week 15 submission. Individual viva takes place in submission week; evaluation finishes before the Week 16 Lab Final Exam.
 

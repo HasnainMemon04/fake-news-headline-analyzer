@@ -12,7 +12,7 @@ Authority: supplied Fall 2026 DOCX versions of the official AL-2002 Project Guid
 | Problem statement 120-180 words | 158 words (body only, whitespace count) |
 | Technique justification 100-150 words | 125 words |
 | Expected outcome and risks 80-120 words | 102 words (body only, whitespace count) |
-| Group table, project metadata, office-use fields | Exactly two members, correct roll numbers and roles; office-use values blank |
+| Group table, project metadata, office-use fields | All three proposed members, correct roll numbers and roles; office-use values blank; group-size approval pending |
 | Idea 19: length, frequent-word, source EDA | Sections 5-6; missing publisher metadata explicitly addressed |
 | Idea 19: NB and LR comparison | Sections 4 and 7; same test IDs plus majority baseline |
 | Idea 19: highlighted influential words | Sections 4-5; contributions specific to each classifier |
@@ -25,7 +25,7 @@ Authority: supplied Fall 2026 DOCX versions of the official AL-2002 Project Guid
 | Modular layout, README and requirements | Present; source implementation explicitly future work |
 | Limitations and ethics | Sections 5, 6 and 10; no independent truth claim, source bias and data terms |
 | Source, caching and offline plan | Section 6 and docs/data-source.md; actual mirror downloaded, schema/counts/hash checked; local cache retained |
-| Work division and five milestones | Sections 8-9; two members, balanced 50/50 planned shares; shared integration, experiments, testing and viva preparation |
+| Work division and five milestones | Sections 8-9; three proposed members, balanced 34/33/33 planned shares; shared integration, experiments, testing and viva preparation |
 | Final Week 15; viva before Week 16 final | Section 9; interim week numbers provisional |
 | Visual QA | Every rendered page inspected; no clipped content, overlap or broken tables |
 | Consistent PDF/MD | Same authoritative content; automated normalized text comparison |
@@ -41,6 +41,8 @@ Libraries are permitted for Labs 09-11, provided students can explain all parame
 Before final project submission, implement the planned module interfaces; pin/revalidate the resulting environment; test missing files/invalid input; run experiments on held-out records; create charts and the final report; validate the project on another machine from a clean clone; check for secrets and large datasets; verify each member's genuine commits; and have every student prepare for the individual viva. Do not fabricate extra contributors or commits.
 
 ## Remaining administrative actions
+
+**Group-size approval pending:** Section 1 limits groups to two, while the heading and template accommodate three. Obtain instructor approval for Muhammad Hasnain Memon (24K-2001), Akbar Hussain (24K-2026), and Ateeb Ahmed Qureshi (24K-2036). No approval has been granted.
 
 1. Confirm Idea 19 availability and record the team on the BCY-5A group sheet; one group per idea per section, first come first served.
 2. Confirm the instructor-announced proposal deadline/current teaching week and enter the actual submission date when submitting.

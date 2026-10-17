@@ -6,10 +6,11 @@ This plan makes the scope reproducible and addresses data and library compatibil
 
 | Member | Primary ownership | Planned share |
 |---|---|---:|
-| Muhammad Hasnain Memon, 24K-2001, Group Leader | Architecture, preprocessing integration, NB/LR, signed word explanations, evaluation and repository coordination | 50% |
-| Akbar Hussain, 24K-2026, Member 2 | Data acquisition, EDA, K-Means, plots, Streamlit and user documentation | 50% |
+| Muhammad Hasnain Memon, 24K-2001, Group Leader | Architecture, preprocessing integration, NB/LR, evaluation and repository coordination | 34% |
+| Akbar Hussain, 24K-2026, Member 2 | Data acquisition, EDA, K-Means and plots | 33% |
+| Ateeb Ahmed Qureshi, 24K-2036, Member 3 | Streamlit, explainability integration, testing and user documentation | 33% |
 
-Both collaborate on integration, experiments, testing and final viva preparation. Each makes genuine commits and records actual contributions in the final report.
+Instructor approval is required for this proposed three-member team; no exception has been granted. All three collaborate on integration, experiments, testing and final viva preparation. Each makes genuine commits and records actual contributions in the final report.
 
 ## Stable data contract
 
@@ -37,4 +38,4 @@ Exclude deployment, paid APIs, article-body features, live fact verification and
 
 ## Final evidence
 
-The separate tools/verify_feasibility.py spike records pre-submission checks. Final work still needs the complete class design and interface, meaningful error/offline tests, accuracy/precision/recall/F1/runtime tables, confusion matrices and at least three labelled charts. Explain clusters and mistakes. Complete PDF/MD report and fresh-clone verification by Week 15. Both members must explain their own modules in the individual viva.
+The separate tools/verify_feasibility.py spike records pre-submission checks. Final work still needs the complete class design and interface, meaningful error/offline tests, accuracy/precision/recall/F1/runtime tables, confusion matrices and at least three labelled charts. Explain clusters and mistakes. Complete PDF/MD report and fresh-clone verification by Week 15. Each member must explain their own modules in the individual viva.

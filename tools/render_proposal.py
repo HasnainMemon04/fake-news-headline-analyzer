@@ -50,6 +50,6 @@ def footer(c,d):
  c.setFont('Helvetica',8);c.setFillColor(colors.HexColor('#536577'))
  c.drawString(48,25,'AL-2002 | Explainable Fake News Headline Analyzer | Fall 2026')
  c.drawRightString(A4[0]-48,25,str(d.page))
-doc=SimpleDocTemplate(str(ROOT/'docs/proposal.pdf'),pagesize=A4,rightMargin=48,leftMargin=48,topMargin=28,bottomMargin=36,title='Explainable Fake News Headline Analyzer - Project Proposal',author='Muhammad Hasnain Memon; Akbar Hussain')
+doc=SimpleDocTemplate(str(ROOT/'docs/proposal.pdf'),pagesize=A4,rightMargin=48,leftMargin=48,topMargin=28,bottomMargin=36,title='Explainable Fake News Headline Analyzer - Project Proposal',author='Muhammad Hasnain Memon; Akbar Hussain; Ateeb Ahmed Qureshi')
 doc.build(story,onFirstPage=footer,onLaterPages=footer)
 print('Rendered docs/proposal.pdf from authoritative docs/proposal.md')
