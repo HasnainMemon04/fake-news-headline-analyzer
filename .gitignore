@@ -205,6 +205,16 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Local news data and generated experiment artifacts
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+outputs/**/*.joblib
+outputs/**/*.pkl
+outputs/**/*.pickle
+.qa/
+
 # Ruff stuff:
 .ruff_cache/
 
