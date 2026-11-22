@@ -1,0 +1,4 @@
+Model,Selected Hyperparameters,Accuracy,Macro-F1,Real Precision,Real Recall,Real F1,Fake Precision,Fake Recall,Fake F1,Train Time (s),Predict Time (s)
+Majority Class Baseline,"{""strategy"": ""most_frequent"", ""majority_class_label"": 0, ""majority_class_name"": ""Real""}",0.5377,0.3497,0.5377,1.0,0.6994,0.0,0.0,0.0,0.0027,0.0007
+Multinomial Naive Bayes,"{""alpha"": 0.5}",0.9339,0.9336,0.9426,0.934,0.9382,0.924,0.9338,0.9289,11.0706,0.1474
+Logistic Regression,"{""C"": 2.0, ""solver"": ""liblinear"", ""max_iter"": 1000, ""iterations_used"": 6}",0.9427,0.9421,0.9308,0.9652,0.9477,0.9577,0.9165,0.9366,13.171,0.1473

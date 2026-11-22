@@ -1,0 +1,1151 @@
+{
+  "project": "Explainable Fake News Headline Analyzer",
+  "course": "AL-2002 Artificial Intelligence Laboratory (Fall 2026)",
+  "seed": 42,
+  "environment": {
+    "python_version": "3.12.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "numpy_version": "2.5.4",
+    "pandas_version": "3.0.6",
+    "scikit_learn_version": "1.9.1"
+  },
+  "dataset_audit": {
+    "files": [
+      {
+        "name": "True.csv",
+        "rows": 21417,
+        "columns": [
+          "title",
+          "text",
+          "subject",
+          "date"
+        ],
+        "bytes": 53582940,
+        "sha256": "ba0844414a65dc6ae7402b8eee5306da24b6b56488d6767135af466c7dcb2775",
+        "checksum_matches_official": true,
+        "blank_titles": 0,
+        "exact_repeated_titles": 591
+      },
+      {
+        "name": "Fake.csv",
+        "rows": 23481,
+        "columns": [
+          "title",
+          "text",
+          "subject",
+          "date"
+        ],
+        "bytes": 62789876,
+        "sha256": "bebf8bcfe95678bf2c732bf413a2ce5f621af0102c82bf08083b2e5d3c693d0c",
+        "checksum_matches_official": true,
+        "blank_titles": 0,
+        "exact_repeated_titles": 5578
+      }
+    ],
+    "raw_rows": 44898,
+    "publisher_column_present": false,
+    "empty_normalized_titles": 0,
+    "conflicting_normalized_title_records": 0,
+    "normalized_duplicates_removed": 6178,
+    "cleaned_unique_titles": 38720,
+    "cleaned_label_counts": {
+      "0": 20819,
+      "1": 17901
+    },
+    "word_count_iqr_bounds": {
+      "q1": 10.0,
+      "q3": 14.0,
+      "lower_fence": 4.0,
+      "upper_fence": 20.0,
+      "outlier_count_retained": 1757
+    },
+    "near_duplicate_rule": "token-set Jaccard >= 0.90, label-blind connected components",
+    "groups": 38695,
+    "split": {
+      "development_rows": 30976,
+      "reserved_heldout_rows": 7744,
+      "duplicate_group_overlap": 0,
+      "development_label_counts": {
+        "0": 16655,
+        "1": 14321
+      },
+      "reserved_test_label_counts": {
+        "0": 4164,
+        "1": 3580
+      }
+    }
+  },
+  "eda_summary": {
+    "dataset_counts": {
+      "raw_rows": 44898,
+      "cleaned_unique_titles": 38720,
+      "development_rows": 30976,
+      "reserved_test_rows": 7744,
+      "normalized_duplicates_removed": 6178,
+      "conflicting_records_removed": 0
+    },
+    "length_statistics_by_class": {
+      "Real": {
+        "count": 20819,
+        "word_count_mean": 10.50535568471108,
+        "word_count_std": 1.847910360378182,
+        "word_count_median": 10.0,
+        "word_count_q1": 9.0,
+        "word_count_q3": 12.0,
+        "word_count_min": 4,
+        "word_count_max": 21,
+        "word_outliers_above_upper_fence": 38,
+        "char_length_mean": 64.67241462125942,
+        "char_length_std": 9.148464756597608,
+        "char_length_median": 64.0,
+        "char_length_min": 26,
+        "char_length_max": 133
+      },
+      "Fake": {
+        "count": 17901,
+        "word_count_mean": 15.069940226802972,
+        "word_count_std": 4.323469422381516,
+        "word_count_median": 14.0,
+        "word_count_q1": 12.0,
+        "word_count_q3": 17.0,
+        "word_count_min": 1,
+        "word_count_max": 45,
+        "word_outliers_above_upper_fence": 655,
+        "char_length_mean": 91.25043293670744,
+        "char_length_std": 24.526882687513716,
+        "char_length_median": 88.0,
+        "char_length_min": 8,
+        "char_length_max": 286
+      }
+    },
+    "word_count_iqr_bounds_overall": {
+      "q1": 10.0,
+      "q3": 14.0,
+      "lower_fence": 4.0,
+      "upper_fence": 20.0,
+      "outlier_count_retained": 1757
+    },
+    "top_words_development": {
+      "Real": [
+        {
+          "term": "trump",
+          "count": 4284
+        },
+        {
+          "term": "says",
+          "count": 2315
+        },
+        {
+          "term": "house",
+          "count": 1161
+        },
+        {
+          "term": "russia",
+          "count": 763
+        },
+        {
+          "term": "new",
+          "count": 692
+        },
+        {
+          "term": "north",
+          "count": 686
+        },
+        {
+          "term": "korea",
+          "count": 661
+        },
+        {
+          "term": "white",
+          "count": 659
+        },
+        {
+          "term": "senate",
+          "count": 597
+        },
+        {
+          "term": "china",
+          "count": 581
+        },
+        {
+          "term": "court",
+          "count": 563
+        },
+        {
+          "term": "obama",
+          "count": 522
+        },
+        {
+          "term": "state",
+          "count": 517
+        },
+        {
+          "term": "clinton",
+          "count": 515
+        },
+        {
+          "term": "republican",
+          "count": 514
+        }
+      ],
+      "Fake": [
+        {
+          "term": "trump",
+          "count": 6232
+        },
+        {
+          "term": "video",
+          "count": 5125
+        },
+        {
+          "term": "obama",
+          "count": 1375
+        },
+        {
+          "term": "hillary",
+          "count": 1232
+        },
+        {
+          "term": "watch",
+          "count": 1214
+        },
+        {
+          "term": "just",
+          "count": 1014
+        },
+        {
+          "term": "president",
+          "count": 668
+        },
+        {
+          "term": "clinton",
+          "count": 657
+        },
+        {
+          "term": "donald",
+          "count": 605
+        },
+        {
+          "term": "gop",
+          "count": 591
+        },
+        {
+          "term": "black",
+          "count": 542
+        },
+        {
+          "term": "new",
+          "count": 536
+        },
+        {
+          "term": "news",
+          "count": 536
+        },
+        {
+          "term": "white",
+          "count": 524
+        },
+        {
+          "term": "breaking",
+          "count": 483
+        }
+      ]
+    },
+    "source_and_provenance_audit": {
+      "publisher_column_present": false,
+      "missing_publisher_rate": 1.0,
+      "documented_real_provenance": "Reuters.com (ISOT official documentation)",
+      "documented_fake_provenance": "Multiple unreliable websites flagged by Politifact and Wikipedia (individual publisher identifiers omitted from public CSVs)",
+      "subject_counts_by_class": {
+        "Real": {
+          "politicsNews": 11148,
+          "worldnews": 9671
+        },
+        "Fake": {
+          "News": 9049,
+          "politics": 6833,
+          "US_News": 783,
+          "left-news": 705,
+          "Government News": 531
+        }
+      },
+      "note": "CSV schema contains only title, text, subject, and date. Subject values partition almost perfectly by file origin and are excluded from model inputs to prevent trivial metadata leakage."
+    }
+  },
+  "cv_grid_results": [
+    {
+      "model_name": "Multinomial Naive Bayes",
+      "alpha": 0.5,
+      "mean_cv_f1_macro": 0.9308903660262068,
+      "std_cv_f1_macro": 0.003476839454056359,
+      "rank": 1
+    },
+    {
+      "model_name": "Multinomial Naive Bayes",
+      "alpha": 1.0,
+      "mean_cv_f1_macro": 0.9308197111694673,
+      "std_cv_f1_macro": 0.002927735085874035,
+      "rank": 2
+    },
+    {
+      "model_name": "Logistic Regression",
+      "C": 0.5,
+      "mean_cv_f1_macro": 0.9240501809765312,
+      "std_cv_f1_macro": 0.001138399063316782,
+      "rank": 3
+    },
+    {
+      "model_name": "Logistic Regression",
+      "C": 1.0,
+      "mean_cv_f1_macro": 0.9301009780308903,
+      "std_cv_f1_macro": 0.0008754299556729419,
+      "rank": 2
+    },
+    {
+      "model_name": "Logistic Regression",
+      "C": 2.0,
+      "mean_cv_f1_macro": 0.9335294715685376,
+      "std_cv_f1_macro": 0.0010852993450268678,
+      "rank": 1
+    }
+  ],
+  "heldout_test_metrics": [
+    {
+      "slug": "majority_baseline",
+      "model_name": "Majority Class Baseline",
+      "best_params": {
+        "strategy": "most_frequent",
+        "majority_class_label": 0,
+        "majority_class_name": "Real"
+      },
+      "vocabulary_size": 0,
+      "accuracy": 0.5377066115702479,
+      "accuracy_95_ci": [
+        0.5263365185950413,
+        0.548750645661157
+      ],
+      "macro_f1": 0.3496808867987907,
+      "macro_f1_95_ci": [
+        0.3448364794022326,
+        0.35431826644582193
+      ],
+      "macro_precision": 0.26885330578512395,
+      "macro_recall": 0.5,
+      "real_precision": 0.5377066115702479,
+      "real_recall": 1.0,
+      "real_f1": 0.6993617735975814,
+      "fake_precision": 0.0,
+      "fake_recall": 0.0,
+      "fake_f1": 0.0,
+      "confusion_matrix": [
+        [
+          4164,
+          0
+        ],
+        [
+          3580,
+          0
+        ]
+      ],
+      "fit_seconds": 0.0027,
+      "predict_seconds": 0.0007,
+      "slice_metrics": [
+        {
+          "slice": "Short (<= 8 words)",
+          "count": 619,
+          "accuracy": 0.840064620355412,
+          "macro_f1": 0.456540825285338
+        },
+        {
+          "slice": "Medium (9-14 words)",
+          "count": 5302,
+          "accuracy": 0.6740852508487363,
+          "macro_f1": 0.40265885534024337
+        },
+        {
+          "slice": "Long (>= 15 words)",
+          "count": 1823,
+          "accuracy": 0.03839824465167307,
+          "macro_f1": 0.036978341257263604
+        }
+      ]
+    },
+    {
+      "slug": "naive_bayes",
+      "model_name": "Multinomial Naive Bayes",
+      "best_params": {
+        "alpha": 0.5
+      },
+      "vocabulary_size": 11954,
+      "accuracy": 0.9338842975206612,
+      "accuracy_95_ci": [
+        0.9276181559917356,
+        0.9391851756198347
+      ],
+      "macro_f1": 0.9335539861461316,
+      "macro_f1_95_ci": [
+        0.9272815210607183,
+        0.9389263708320914
+      ],
+      "macro_precision": 0.9332752674393958,
+      "macro_recall": 0.9338783078153259,
+      "real_precision": 0.9425593795443529,
+      "real_recall": 0.9339577329490875,
+      "real_f1": 0.9382388419782871,
+      "fake_precision": 0.9239911553344389,
+      "fake_recall": 0.9337988826815642,
+      "fake_f1": 0.9288691303139761,
+      "confusion_matrix": [
+        [
+          3889,
+          275
+        ],
+        [
+          237,
+          3343
+        ]
+      ],
+      "fit_seconds": 11.0706,
+      "predict_seconds": 0.1474,
+      "slice_metrics": [
+        {
+          "slice": "Short (<= 8 words)",
+          "count": 619,
+          "accuracy": 0.9046849757673667,
+          "macro_f1": 0.8429994368425351
+        },
+        {
+          "slice": "Medium (9-14 words)",
+          "count": 5302,
+          "accuracy": 0.9294605809128631,
+          "macro_f1": 0.9206805189926137
+        },
+        {
+          "slice": "Long (>= 15 words)",
+          "count": 1823,
+          "accuracy": 0.9566648381788261,
+          "macro_f1": 0.8064529568212575
+        }
+      ]
+    },
+    {
+      "slug": "logistic_regression",
+      "model_name": "Logistic Regression",
+      "best_params": {
+        "C": 2.0,
+        "solver": "liblinear",
+        "max_iter": 1000,
+        "iterations_used": 6
+      },
+      "vocabulary_size": 11954,
+      "accuracy": 0.9426652892561983,
+      "accuracy_95_ci": [
+        0.9370448088842975,
+        0.9474431818181818
+      ],
+      "macro_f1": 0.9421398022902592,
+      "macro_f1_95_ci": [
+        0.9363518040714264,
+        0.9469235547986319
+      ],
+      "macro_precision": 0.9442157849667163,
+      "macro_recall": 0.9408290803320829,
+      "real_precision": 0.9307549791570171,
+      "real_recall": 0.9651777137367915,
+      "real_f1": 0.9476538552228249,
+      "fake_precision": 0.9576765907764156,
+      "fake_recall": 0.9164804469273743,
+      "fake_f1": 0.9366257493576934,
+      "confusion_matrix": [
+        [
+          4019,
+          145
+        ],
+        [
+          299,
+          3281
+        ]
+      ],
+      "fit_seconds": 13.171,
+      "predict_seconds": 0.1473,
+      "slice_metrics": [
+        {
+          "slice": "Short (<= 8 words)",
+          "count": 619,
+          "accuracy": 0.9337641357027464,
+          "macro_f1": 0.876246483028326
+        },
+        {
+          "slice": "Medium (9-14 words)",
+          "count": 5302,
+          "accuracy": 0.944549226706903,
+          "macro_f1": 0.9364185295158487
+        },
+        {
+          "slice": "Long (>= 15 words)",
+          "count": 1823,
+          "accuracy": 0.9402084476138234,
+          "macro_f1": 0.7597048839743195
+        }
+      ]
+    }
+  ],
+  "error_analysis_examples": {
+    "naive_bayes": [
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "Trump nominates Liberty University professor to Justice Department post",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.6798,
+        "top_influential_terms": [
+          {
+            "term": "professor",
+            "signed_contribution": 0.7817,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "liberty",
+            "signed_contribution": 0.6405,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "nominates",
+            "signed_contribution": -0.2829,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "department",
+            "signed_contribution": -0.2586,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "university",
+            "signed_contribution": 0.1621,
+            "direction": "Fake (+)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "Trump defends tax plan as 'great Christmas gifts' to middle class",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.6127,
+        "top_influential_terms": [
+          {
+            "term": "great",
+            "signed_contribution": 0.4942,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "tax",
+            "signed_contribution": -0.447,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "class",
+            "signed_contribution": 0.3668,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "gifts",
+            "signed_contribution": 0.3162,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "plan",
+            "signed_contribution": -0.2628,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "Senator Gillibrand calls Trump Twitter post 'sexist smear'",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.7939,
+        "top_influential_terms": [
+          {
+            "term": "sexist",
+            "signed_contribution": 1.3059,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "smear",
+            "signed_contribution": 0.4197,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "twitter",
+            "signed_contribution": 0.2131,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "senator",
+            "signed_contribution": -0.1297,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "post",
+            "signed_contribution": -0.1231,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " Trump Completely SCREWS The Middle East Peace Process, Just Another Wednesday For Him",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.3924,
+        "top_influential_terms": [
+          {
+            "term": "wednesday",
+            "signed_contribution": -1.2641,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "just",
+            "signed_contribution": 0.8057,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "screws",
+            "signed_contribution": 0.7456,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "completely",
+            "signed_contribution": 0.7436,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "east",
+            "signed_contribution": -0.5503,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " Here\u2019s What We ALL Need To Do If Trump Moves To Fire Mueller And Shut Down The Russia Probe",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.2486,
+        "top_influential_terms": [
+          {
+            "term": "probe",
+            "signed_contribution": -0.807,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "moves",
+            "signed_contribution": -0.728,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "shut",
+            "signed_contribution": 0.5178,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "russia",
+            "signed_contribution": -0.352,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "mueller",
+            "signed_contribution": 0.2106,
+            "direction": "Fake (+)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " Trump\u2019s Puerto Rico Contract With Two-Man Energy Company Is Corrupt As F*ck",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.4814,
+        "top_influential_terms": [
+          {
+            "term": "ck",
+            "signed_contribution": 1.4469,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "contract",
+            "signed_contribution": -0.9956,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "corrupt",
+            "signed_contribution": 0.7407,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "rico",
+            "signed_contribution": -0.704,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "puerto",
+            "signed_contribution": -0.6641,
+            "direction": "Real (-)"
+          }
+        ]
+      }
+    ],
+    "logistic_regression": [
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "Federal judge partially lifts Trump's latest refugee restrictions",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.6175,
+        "top_influential_terms": [
+          {
+            "term": "federal",
+            "signed_contribution": 0.6831,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "latest",
+            "signed_contribution": 0.6106,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "lifts",
+            "signed_contribution": -0.3372,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "refugee",
+            "signed_contribution": 0.3342,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "judge",
+            "signed_contribution": -0.1535,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "Trump on Twitter (Dec 8) - Hanukkah, Roy Moore, Wells Fargo",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.5199,
+        "top_influential_terms": [
+          {
+            "term": "roy",
+            "signed_contribution": 0.6539,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "dec",
+            "signed_contribution": -0.5964,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "twitter",
+            "signed_contribution": 0.4349,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "moore",
+            "signed_contribution": 0.2824,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "trump",
+            "signed_contribution": 0.1425,
+            "direction": "Fake (+)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Positive (Real predicted as Fake)",
+        "headline": "'Good to go': Top Trump aide gave inaugural day ok to nuclear plan - congressman",
+        "true_label": "Real",
+        "predicted_label": "Fake",
+        "fake_probability": 0.5531,
+        "top_influential_terms": [
+          {
+            "term": "gave",
+            "signed_contribution": 0.9082,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "aide",
+            "signed_contribution": -0.5952,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "good",
+            "signed_contribution": 0.4358,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "day",
+            "signed_contribution": 0.4048,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "nuclear",
+            "signed_contribution": -0.3985,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " OOPS: Trump Judicial Nominee Didn\u2019t Tell Congress About Marriage To White House Attorney",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.3865,
+        "top_influential_terms": [
+          {
+            "term": "house",
+            "signed_contribution": -0.9454,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "oops",
+            "signed_contribution": 0.8567,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "didn",
+            "signed_contribution": 0.7721,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "nominee",
+            "signed_contribution": -0.6327,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "congress",
+            "signed_contribution": -0.4025,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " Here\u2019s What We ALL Need To Do If Trump Moves To Fire Mueller And Shut Down The Russia Probe",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.2733,
+        "top_influential_terms": [
+          {
+            "term": "probe",
+            "signed_contribution": -1.234,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "shut",
+            "signed_contribution": 0.8177,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "moves",
+            "signed_contribution": -0.7896,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "mueller",
+            "signed_contribution": 0.7409,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "russia",
+            "signed_contribution": -0.5491,
+            "direction": "Real (-)"
+          }
+        ]
+      },
+      {
+        "error_type": "False Negative (Fake predicted as Real)",
+        "headline": " Trump Gets His A** Handed To Him By British Lawmakers For Lying About Rising Crime Rate In UK",
+        "true_label": "Fake",
+        "predicted_label": "Real",
+        "fake_probability": 0.1614,
+        "top_influential_terms": [
+          {
+            "term": "lawmakers",
+            "signed_contribution": -1.0271,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "uk",
+            "signed_contribution": -0.9789,
+            "direction": "Real (-)"
+          },
+          {
+            "term": "gets",
+            "signed_contribution": 0.8245,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "lying",
+            "signed_contribution": 0.7841,
+            "direction": "Fake (+)"
+          },
+          {
+            "term": "british",
+            "signed_contribution": -0.7234,
+            "direction": "Real (-)"
+          }
+        ]
+      }
+    ]
+  },
+  "kmeans_evaluation": {
+    "selected_k": 5,
+    "k_candidates_evaluated": [
+      {
+        "k": 3,
+        "silhouette_score": 0.002515477648958963,
+        "inertia": 30594.207193108537,
+        "min_cluster_size": 1458,
+        "max_cluster_size": 19767,
+        "cluster_top_terms_preview": [
+          "trump, video, donald, says, watch",
+          "house, white, trump, speaker, tax",
+          "video, says, obama, hillary, clinton"
+        ]
+      },
+      {
+        "k": 5,
+        "silhouette_score": 0.003532009830013407,
+        "inertia": 30477.27374733611,
+        "min_cluster_size": 705,
+        "max_cluster_size": 16683,
+        "cluster_top_terms_preview": [
+          "says, house, obama, new, senate",
+          "state, islamic, department, syria, trump",
+          "trump, says, donald, watch, just",
+          "korea, north, south, says, china",
+          "video, trump, hillary, obama, watch"
+        ]
+      },
+      {
+        "k": 8,
+        "silhouette_score": 0.004089390231600161,
+        "inertia": 30303.633837551555,
+        "min_cluster_size": 675,
+        "max_cluster_size": 13573,
+        "cluster_top_terms_preview": [
+          "trump, donald, watch, clinton, tweets",
+          "house, white, trump, speaker, says",
+          "new, state, clinton, north, court",
+          "senate, panel, tax, healthcare, vote",
+          "video, trump, hillary, watch, black",
+          "obama, video, trump, president, michelle",
+          "just, trump, video, got, obama",
+          "says, trump, korea, russia, north"
+        ]
+      }
+    ],
+    "clusters": [
+      {
+        "cluster_id": 0,
+        "label_name": "Cluster 1: Says / House / Obama",
+        "size": 16683,
+        "percentage": 53.85782541322314,
+        "top_terms": [
+          "says",
+          "house",
+          "obama",
+          "new",
+          "senate",
+          "russia",
+          "white",
+          "court",
+          "clinton",
+          "republican"
+        ],
+        "top_term_weights": [
+          0.01759905124108937,
+          0.012783074968423895,
+          0.012041653194959829,
+          0.009487800622221206,
+          0.008369788908132598,
+          0.008275623661260523,
+          0.008217344893187171,
+          0.007980000867311663,
+          0.007945403397385148,
+          0.007924755078014949
+        ],
+        "representative_headlines": [
+          "Republican Ted Cruz says Senate should not vote on President Obama's Supreme Court nominee",
+          "Senate to vote on tax plan this week, No. 2 Republican says",
+          "Obama to meet Senate leaders over Supreme Court next week: White House"
+        ],
+        "real_share_audit": 0.6848888089672122,
+        "fake_share_audit": 0.31511119103278784
+      },
+      {
+        "cluster_id": 1,
+        "label_name": "Cluster 2: State / Islamic / Department",
+        "size": 739,
+        "percentage": 2.3857179752066116,
+        "top_terms": [
+          "state",
+          "islamic",
+          "department",
+          "syria",
+          "trump",
+          "secretary",
+          "says",
+          "tillerson",
+          "iraq",
+          "syrian"
+        ],
+        "top_term_weights": [
+          0.24521926628416119,
+          0.0814268756093005,
+          0.043894517250747646,
+          0.020197491327836378,
+          0.01981969885602305,
+          0.019208927149344062,
+          0.016013806329106952,
+          0.015514513504822823,
+          0.012784890588306095,
+          0.012301873983109377
+        ],
+        "representative_headlines": [
+          "The Battle against Islamic State",
+          "Syrian army seizes oilfield from Islamic State in east: state TV",
+          "Factbox: State-by-state poll closing times for U.S. election"
+        ],
+        "real_share_audit": 0.6860622462787551,
+        "fake_share_audit": 0.31393775372124494
+      },
+      {
+        "cluster_id": 2,
+        "label_name": "Cluster 3: Trump / Says / Donald",
+        "size": 7935,
+        "percentage": 25.616606404958674,
+        "top_terms": [
+          "trump",
+          "says",
+          "donald",
+          "watch",
+          "just",
+          "house",
+          "tweets",
+          "white",
+          "russia",
+          "president"
+        ],
+        "top_term_weights": [
+          0.11533650382502127,
+          0.018193445235978305,
+          0.013359439952169974,
+          0.011702957190697295,
+          0.011358661639060642,
+          0.0113271022459459,
+          0.01032091071312519,
+          0.010240491904207151,
+          0.009957463353940264,
+          0.00976745496369165
+        ],
+        "representative_headlines": [
+          " More People Now Support Trump\u2019s Impeachment Than Trump As President",
+          "White House says Trump, Merkel 'get along very well'",
+          " Donald Trump Has Big Plans For Trump University After Lawsuit Is Over"
+        ],
+        "real_share_audit": 0.5092627599243856,
+        "fake_share_audit": 0.49073724007561437
+      },
+      {
+        "cluster_id": 3,
+        "label_name": "Cluster 4: Korea / North / South",
+        "size": 705,
+        "percentage": 2.275955578512397,
+        "top_terms": [
+          "korea",
+          "north",
+          "south",
+          "says",
+          "china",
+          "nuclear",
+          "trump",
+          "korean",
+          "sanctions",
+          "missile"
+        ],
+        "top_term_weights": [
+          0.26066860801687314,
+          0.231883622390601,
+          0.05128707841617644,
+          0.04789906856832292,
+          0.044553408750457414,
+          0.03376122401027085,
+          0.03127779364280589,
+          0.030962271615090062,
+          0.03003244652558018,
+          0.029814624985202015
+        ],
+        "representative_headlines": [
+          "South Korea president says China response to North Korea nuclear test key",
+          "North Korea fires ballistic missile; U.S., South Korea analyzing: South Korea military",
+          "China says made representations to North Korea over nuclear test"
+        ],
+        "real_share_audit": 0.9390070921985816,
+        "fake_share_audit": 0.06099290780141844
+      },
+      {
+        "cluster_id": 4,
+        "label_name": "Cluster 5: Video / Trump / Hillary",
+        "size": 4914,
+        "percentage": 15.863894628099173,
+        "top_terms": [
+          "video",
+          "trump",
+          "hillary",
+          "obama",
+          "watch",
+          "just",
+          "president",
+          "donald",
+          "black",
+          "clinton"
+        ],
+        "top_term_weights": [
+          0.1349801501308938,
+          0.04265061983307036,
+          0.02203220053777354,
+          0.017591148727228372,
+          0.016837971400560325,
+          0.013540237238565992,
+          0.01256414511719939,
+          0.0118444396619279,
+          0.011766443637285323,
+          0.010963133178082474
+        ],
+        "representative_headlines": [
+          "(VIDEO) DONALD TRUMP: \u201cNOT BEHOLDEN TO ANYONE\u201d",
+          "VIRAL VIDEO: A Must Watch Video Hillary Doesn\u2019t Want You To See!",
+          " Teens Post Video On What They Would Do To Black People As President (VIDEO)"
+        ],
+        "real_share_audit": 0.0038665038665038898,
+        "fake_share_audit": 0.9961334961334961
+      }
+    ]
+  },
+  "figures": {
+    "eda_length_distributions": "outputs\\figures\\eda_length_distributions.png",
+    "eda_top_words_and_provenance": "outputs\\figures\\eda_top_words_and_provenance.png",
+    "model_comparison_metrics": "outputs\\figures\\model_comparison_metrics.png",
+    "confusion_matrices": "outputs\\figures\\confusion_matrices.png",
+    "kmeans_clusters_analysis": "outputs\\figures\\kmeans_clusters_analysis.png",
+    "kmeans_2d_projection": "outputs\\figures\\kmeans_2d_projection.png"
+  },
+  "total_elapsed_seconds": 61.04
+}
