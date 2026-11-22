@@ -1,0 +1,6 @@
+Cluster ID,Topic Descriptor,Size (Dev),Share (%),Top 8 Terms,Representative Headline,Post-hoc Real Share (%),Post-hoc Fake Share (%)
+1,Cluster 1: Says / House / Obama,16683,53.86,"says, house, obama, new, senate, russia, white, court",Republican Ted Cruz says Senate should not vote on President Obama's Supreme Court nominee,68.5,31.5
+2,Cluster 2: State / Islamic / Department,739,2.39,"state, islamic, department, syria, trump, secretary, says, tillerson",The Battle against Islamic State,68.6,31.4
+3,Cluster 3: Trump / Says / Donald,7935,25.62,"trump, says, donald, watch, just, house, tweets, white", More People Now Support Trump’s Impeachment Than Trump As President,50.9,49.1
+4,Cluster 4: Korea / North / South,705,2.28,"korea, north, south, says, china, nuclear, trump, korean",South Korea president says China response to North Korea nuclear test key,93.9,6.1
+5,Cluster 5: Video / Trump / Hillary,4914,15.86,"video, trump, hillary, obama, watch, just, president, donald",(VIDEO) DONALD TRUMP: “NOT BEHOLDEN TO ANYONE”,0.4,99.6

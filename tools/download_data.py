@@ -32,8 +32,14 @@ def main():
         return
     print("Downloading public ISOT mirror (about 43 MB)...", flush=True)
     request = urllib.request.Request(URL, headers={"User-Agent": "headline-analyzer-academic-project/1.0"})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        archive = response.read()
+    chunks: list[bytes] = []
+    with urllib.request.urlopen(request, timeout=180) as response:
+        while True:
+            chunk = response.read(1024 * 1024)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    archive = b"".join(chunks)
     if hashlib.sha256(archive).hexdigest() != EXPECTED_SHA256:
         raise ValueError("Archive differs from verified version. Keep the cached dataset; review the source before replacing it.")
     with zipfile.ZipFile(io.BytesIO(archive)) as dataset:
